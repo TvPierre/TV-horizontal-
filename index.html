@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TV da Fábrica</title>
+  <style>
+    body { margin: 0; background-color: black; }
+    video { width: 100vw; height: 100vh; object-fit: cover; }
+  </style>
+</head>
+<body>
+  <video id="player" autoplay muted></video>
+
+  <script>
+    const playlist = [
+      "https://drive.google.com/uc?export=download&id=1pT2tOfwosdYPNa2xLiwhWiBEcBy-j5Wu",
+      "https://drive.google.com/uc?export=download&id=12okHKT8ddBAoaJa4vVeT3at3C6BveUTf",
+      "https://drive.google.com/uc?export=download&id=1JQOom1bEeaxcPot96RNa2scEunpBfKyG"
+    ];
+
+    let current = 0;
+    const player = document.getElementById("player");
+
+    function playNext() {
+      player.src = playlist[current];
+      player.play();
+      current = (current + 1) % playlist.length;
+    }
+
+    player.addEventListener('ended', playNext);
+    playNext();
+  </script>
+</body>
+</html>
